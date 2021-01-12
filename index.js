@@ -1,16 +1,51 @@
 const achievementsElement = document.querySelector('#achievements')
-const achievements = [{
-  name: 'test'
-}];
+const initialAchievements = [
+  {
+    name: 'born'
+  },
+  {
+    name: 'still alive'
+  }
+];
+
+const storedAchievementsString = localStorage.getItem('achievements')
+const achievements = storedAchievementsString ? JSON.parse(storedAchievementsString) : initialAchievements
+
+const addAchievement = (achievement) => {
+  achievements.unshift(achievement)
+  localStorage.setItem('achievements', JSON.stringify(achievements))
+  render()
+}
 
 const render = () => {
-  const html = achievements
+  const state = {
+    name: '',
+  }
+
+  const achievementsList = achievements
     .map(achievement => `
       <p>${achievement.name}</p>  
     `)
     .join('');
 
-  achievementsElement.innerHTML = html;
+  window.handleAddAchievementClick = () => {
+    addAchievement({
+      name: state.name,
+    })
+  }
+
+  window.handleNameChange = (input) => {
+    state.name = input.value
+  }
+
+  const achievementNameInput = `<input type="text" onchange="handleNameChange(this)" />`
+  const addAchievementButton = `<button onclick="handleAddAchievementClick(this)">new</button>`;
+
+  achievementsElement.innerHTML = `
+    ${achievementsList}
+    ${achievementNameInput}
+    ${addAchievementButton}
+  `
 }
 
-render();
+render()
