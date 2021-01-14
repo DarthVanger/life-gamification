@@ -1,4 +1,6 @@
 import AchievementsList from './AchievementsList.js'
+import AddAchievementForm from './AddAchievementForm.js'
+
 const element = document.querySelector('#achievements')
 const initialAchievements = [
   {
@@ -21,7 +23,7 @@ const addAchievement = (achievement) => {
 const render = () => {
   element.innerHTML = ''
   element.append(AchievementsList({ achievements }))
-  //element.append(AddAchievementForm())
+  element.append(AddAchievementForm({ onSubmit: addAchievement }))
 }
 
 render()

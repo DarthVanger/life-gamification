@@ -1,17 +1,32 @@
-  //const state = {
-  //  name: '',
-  //}
+const AddAchievementsForm = ({ onSubmit }) => {
+  const element = document.createElement('form')
+  const state = {
+    name: '',
+  }
 
-  window.handleAddAchievementClick = () => {
-    addAchievement({
+  const handleAddAchievementClick = () => {
+    onSubmit({
       name: state.name,
     })
   }
 
-  window.handleNameChange = (input) => {
-    state.name = input.value
+  const handleNameChange = (event) => {
+    state.name = event.target.value
   }
 
-  const achievementNameInput = `<input type="text" onchange="handleNameChange(this)" />`
-  const addAchievementButton = `<button onclick="handleAddAchievementClick(this)">new</button>`;
+  const nameInput = document.createElement('input')
+  nameInput.type = 'text'
+  nameInput.addEventListener('change', handleNameChange)
 
+  const addButton = document.createElement('button')
+  addButton.type = 'button'
+  addButton.innerText = 'Add'
+  addButton.addEventListener('click', handleAddAchievementClick)
+
+  element.append(nameInput)
+  element.append(addButton)
+
+  return element
+}
+
+export default AddAchievementsForm
