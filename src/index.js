@@ -1,4 +1,5 @@
-const achievementsElement = document.querySelector('#achievements')
+import AchievementsList from './AchievementsList.js'
+const element = document.querySelector('#achievements')
 const initialAchievements = [
   {
     name: 'born'
@@ -18,34 +19,9 @@ const addAchievement = (achievement) => {
 }
 
 const render = () => {
-  const state = {
-    name: '',
-  }
-
-  const achievementsList = achievements
-    .map(achievement => `
-      <p>${achievement.name}</p>  
-    `)
-    .join('');
-
-  window.handleAddAchievementClick = () => {
-    addAchievement({
-      name: state.name,
-    })
-  }
-
-  window.handleNameChange = (input) => {
-    state.name = input.value
-  }
-
-  const achievementNameInput = `<input type="text" onchange="handleNameChange(this)" />`
-  const addAchievementButton = `<button onclick="handleAddAchievementClick(this)">new</button>`;
-
-  achievementsElement.innerHTML = `
-    ${achievementsList}
-    ${achievementNameInput}
-    ${addAchievementButton}
-  `
+  element.innerHTML = ''
+  element.append(AchievementsList({ achievements }))
+  //element.append(AddAchievementForm())
 }
 
 render()
