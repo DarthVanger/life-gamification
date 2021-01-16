@@ -1,7 +1,12 @@
-import { applyStyles, imgSrc } from './utils.js'
+import { applyStyles, imgSrc, useState } from './utils.js'
 
 const Achievement = ({ name }) => {
   const element = document.createElement('div')
+  const [state, setState] = useState(Achievement, element, { name })
+
+  element.addEventListener('click', () => {
+     setState({ editMode: !state.editMode })
+  })
 
   const medalIcon = document.createElement('img')
   medalIcon.src = imgSrc('medal.png')
@@ -11,7 +16,7 @@ const Achievement = ({ name }) => {
   element.append(medalIcon)
 
   const nameElement = document.createElement('div')
-  nameElement.innerText = name
+  nameElement.innerText = name + '\neditMode: ' + state.editMode
   applyStyles(nameElement, {
     marginTop: '16px',
     fontSize: '2em',
