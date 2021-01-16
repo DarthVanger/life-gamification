@@ -1,12 +1,15 @@
 import AchievementsList from './AchievementsList.js'
 import AddAchievementForm from './AddAchievementForm.js'
+import { guid } from './utils.js'
 
 const element = document.querySelector('#achievements')
 const initialAchievements = [
   {
+    id: guid(),
     name: 'born'
   },
   {
+    id: guid(),
     name: 'still alive'
   }
 ];
