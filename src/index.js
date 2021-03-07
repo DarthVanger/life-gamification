@@ -6,11 +6,13 @@ const element = document.querySelector('#achievements')
 const initialAchievements = [
   {
     id: guid(),
-    name: 'born'
+    name: 'born',
+    stars: 1,
   },
   {
     id: guid(),
-    name: 'still alive'
+    name: 'still alive',
+    stars: 2,
   }
 ];
 

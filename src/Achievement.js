@@ -8,12 +8,14 @@ const Achievement = (achievement) => {
     setState({ editAchievement: achievement })
   })
 
-  const medalIcon = document.createElement('img')
-  medalIcon.src = imgSrc('medal.png')
-  applyStyles(medalIcon, {
-    height: '2em',
-  })
-  element.append(medalIcon)
+  for (let i = 0; i < achievement.stars; i++) {
+    const medalIcon = document.createElement('img')
+    medalIcon.src = imgSrc('medal.png')
+    applyStyles(medalIcon, {
+      height: '2em',
+    })
+    element.append(medalIcon)
+  }
 
   const nameElement = document.createElement('div')
   nameElement.innerText = achievement.name
