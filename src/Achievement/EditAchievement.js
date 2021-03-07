@@ -1,5 +1,5 @@
-import { applyStyles, imgSrc } from './utils.js'
-import { state, setState } from './state.js'
+import { applyStyles, imgSrc } from './../utils.js'
+import { state, setState } from './../state.js'
 
 export const EditAchievement = (achievement) => {
   const element = document.createElement('div')

@@ -1,6 +1,6 @@
 import { applyStyles } from './utils.js'
-import Achievement from './Achievement.js'
-import { EditAchievement } from './EditAchievement.js'
+import Achievement from './Achievement/Achievement.js'
+import { EditAchievement } from './Achievement/EditAchievement.js'
 import { subscribe } from './state.js'
 
 const AchievementsList = ({ achievements }) => {
