@@ -1,5 +1,6 @@
 import { applyStyles, imgSrc } from './../utils.js'
 import { state, setState } from './../state.js'
+import Stars from './Stars.js'
 
 const Achievement = (achievement) => {
   const element = document.createElement('div')
@@ -8,14 +9,7 @@ const Achievement = (achievement) => {
     setState({ editAchievement: achievement })
   })
 
-  for (let i = 0; i < achievement.stars; i++) {
-    const medalIcon = document.createElement('img')
-    medalIcon.src = imgSrc('medal.png')
-    applyStyles(medalIcon, {
-      height: '2em',
-    })
-    element.append(medalIcon)
-  }
+  element.append(Stars(achievement))
 
   const nameElement = document.createElement('div')
   nameElement.innerText = achievement.name
