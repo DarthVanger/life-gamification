@@ -6,7 +6,7 @@ import { subscribe } from './state.js'
 const AchievementsList = ({ achievements }) => {
   const element = document.createElement('div')
 
-  subscribe((state, previousState) => {
+  const maybeToggleEditMode = (state, previousState) => {
     if (state.editAchievement !== previousState.editAchievement) {
       if (state.editAchievement) {
         const { editAchievement } = state
@@ -22,6 +22,10 @@ const AchievementsList = ({ achievements }) => {
         editAchievementElement.replaceWith(newElement)
       }
     }
+  }
+
+  subscribe((state, previousState) => {
+    maybeToggleEditMode(state, previousState);
   })
 
   const styles = {
