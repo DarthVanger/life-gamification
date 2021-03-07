@@ -1,6 +1,7 @@
 import AchievementsList from './AchievementsList.js'
 import AddAchievementForm from './AddAchievementForm.js'
 import { guid } from './utils.js'
+import { state, setState } from './state.js'
 
 const element = document.querySelector('#achievements')
 const initialAchievements = [
@@ -18,6 +19,8 @@ const initialAchievements = [
 
 const storedAchievementsString = localStorage.getItem('achievements')
 const achievements = storedAchievementsString ? JSON.parse(storedAchievementsString) : initialAchievements
+
+setState({ achievements })
 
 const addAchievement = (achievement) => {
   achievements.unshift(achievement)
