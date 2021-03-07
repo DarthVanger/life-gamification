@@ -15,14 +15,16 @@ export const EditAchievement = (achievement) => {
   })
   element.append(medalIcon)
 
-  const nameElement = document.createElement('div')
-  nameElement.innerText = 'EDIT' + achievement.name
-  applyStyles(nameElement, {
+  const nameInput = document.createElement('input');
+  nameInput.type = 'text';
+  nameInput.value = achievement.name
+  applyStyles(nameInput, {
     marginTop: '16px',
     fontSize: '2em',
     textAlign: 'center',
+    width: '100%',
   })
-  element.append(nameElement)
+  element.append(nameInput)
 
   const styles = {
     backgroundColor: '#b5e8ff',
