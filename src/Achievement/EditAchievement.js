@@ -6,10 +6,28 @@ export const EditAchievement = (achievement) => {
   const element = document.createElement('div')
 
   element.addEventListener('click', () => {
-    setState({ editAchievement: undefined })
+    //setState({ editAchievement: undefined })
   })
 
-  element.append(Stars(achievement))
+  const handleMedalClick = (numberOfStars) => {
+    setState({ editAchievement: {
+      ...achievement,
+      stars: numberOfStars,
+    }});
+  }
+
+  for (let starIndex = 0; starIndex < 5; starIndex++) {
+    const medalIcon = document.createElement('img')
+    medalIcon.src = imgSrc('medal.png')
+    applyStyles(medalIcon, {
+      height: '2em',
+      opacity: starIndex < achievement.stars ? '1' : '0.5',
+    })
+
+    medalIcon.addEventListener('click', () => handleMedalClick(starIndex + 1));
+
+    element.append(medalIcon)
+  }
 
   const nameInput = document.createElement('input');
   nameInput.type = 'text';
